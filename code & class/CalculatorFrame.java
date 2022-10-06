@@ -44,12 +44,12 @@ class CalculatorFrame extends Frame implements ActionListener, WindowListener {
 
         // adding buttons etc.
         f = new Font("Arial", Font.BOLD, 30);
-        crossButton = new Button("C");
+        crossButton = new Button("AC");
         crossButton.setFont(f);
         crossButton.setBounds(25, 133 + y, w, h);
         add(crossButton);
 
-        clearButton = new Button("<-");
+        clearButton = new Button("DEL");
         clearButton.setFont(f);
         clearButton.setBounds(100, 133 + y, w, h);
         add(clearButton);
@@ -196,13 +196,13 @@ class CalculatorFrame extends Frame implements ActionListener, WindowListener {
         Calculator calculator = new Calculator();
         String s = ae.getActionCommand();
         char receivedAction = s.charAt(0);
-        if (receivedAction == 'C') {
+        if (receivedAction == 'A') {
             input.setText("0");
             inputOne = 0.0;
             inputTwo = 0.0;
             return;
         }
-        if (receivedAction == '<') { // clear button
+        if (receivedAction == 'D') { // clear button
             String temp = input.getText();
 
             if (temp.length() == 1) {
@@ -238,7 +238,7 @@ class CalculatorFrame extends Frame implements ActionListener, WindowListener {
             return;
         }
         if (Character.isDigit(receivedAction)) {
-            if (input.getText().length() > 7) {
+            if (input.getText().length() > 9) {
                 return;
             }
             calculator.processInput(receivedAction);
